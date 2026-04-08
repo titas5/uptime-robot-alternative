@@ -13,8 +13,13 @@ export default function Register() {
     try {
       await api.post('/auth/register', { email, password });
       router.push('/login');
-    } catch (err) {
-      alert('Registration failed');
+    } catch (err: any) {
+      console.error('Registration error context:', err);
+      if (err.response) {
+        alert(`Registration failed: ${err.response.data.detail || err.response.statusText}`);
+      } else {
+        alert(`Registration failed: ${err.message}`);
+      }
     }
   };
 

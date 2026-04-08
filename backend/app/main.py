@@ -6,6 +6,7 @@ from app.core.config import settings
 from app.api.auth import router as auth_router
 from app.api.monitors import router as monitors_router
 from app.db.database import engine, Base
+from fastapi.middleware.cors import CORSMiddleware
 
 # Create tables if not using Alembic currently
 Base.metadata.create_all(bind=engine)
@@ -15,6 +16,15 @@ limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title=settings.PROJECT_NAME,
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
 )
 
 app.state.limiter = limiter
