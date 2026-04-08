@@ -22,8 +22,8 @@ docker-compose up -d --build
 ```
 
 ### 3. Exposing the API
-Your API now natively runs on `http://<SERVER_1_IP>:8000/api/v1`. 
-*Note: For production, it's highly recommended you put an Nginx Reverse Proxy over port 8000 to assign an SSL Certificate mapping it to a real domain like `https://api.yourdomain.com/api/v1`.*
+Your API now natively runs on `http://<SERVER_1_IP>:5555/api/v1`. 
+*Note: For production, it's highly recommended you put an Nginx Reverse Proxy over port 5555 to assign an SSL Certificate mapping it to a real domain like `https://api.yourdomain.com/api/v1`.*
 
 ---
 
@@ -36,7 +36,7 @@ Vercel is the creator of Next.js and is optimized to run frontend frameworks sec
 1. Push your `frontend` code folder to a new standalone GitHub Repository.
 2. Log into Vercel and import the repository.
 3. In the Vercel **Environment Variables** deployment section, add:
-   - `NEXT_PUBLIC_API_URL` = `http://<SERVER_1_IP>:8000/api/v1` *(or use your backend's SSL configured domain)*
+   - `NEXT_PUBLIC_API_URL` = `http://<SERVER_1_IP>:5555/api/v1` *(or use your backend's SSL configured domain)*
 4. Click **Deploy**.
 
 ### Option B: Dedicated Linux VPS (e.g., Ubuntu)
@@ -46,7 +46,7 @@ If you wish to host the frontend stack yourself manually on a second generic Lin
 2. SSH into Server 2 and navigate to the newly cloned `frontend/` directory.
 3. Create a `.env` file mapping the traffic strictly towards Server 1's connection:
    ```bash
-   echo "NEXT_PUBLIC_API_URL=http://<SERVER_1_IP>:8000/api/v1" > .env
+   echo "NEXT_PUBLIC_API_URL=http://<SERVER_1_IP>:5555/api/v1" > .env
    ```
 4. Install Modules and Bundle the Production Build:
    ```bash

@@ -24,7 +24,7 @@ You can spawn the entire backend stack (PostgreSQL, Redis, FastAPI, Celery Worke
 ```bash
 docker-compose up -d --build
 ```
-*The API will be mapped to `http://localhost:8000`*.
+*The API will be mapped to `http://localhost:5555`*.
 
 ### 2. Running Frontend
 Navigate to the Next.js directory to spool up the web application:

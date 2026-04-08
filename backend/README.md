@@ -72,10 +72,10 @@ Once your database, redis, and virtual environment are set up, you need to run t
 Run the core API service handling web requests:
 ```bash
 # If using development mode:
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 5555 --reload
 
 # For production, it's recommended to run without --reload and to use Gunicorn:
-# gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
+# gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:5555
 ```
 
 ### Process 2: Celery Background Worker
